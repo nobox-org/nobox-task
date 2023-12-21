@@ -1,14 +1,14 @@
 import PostForm from "@/components/post/PostForm";
 
 
-const PostPage = () => {
+const EditPostPage = () => {
 
 
     return (
         <section>
-            <PostForm />
+            <PostForm edit/>
         </section>
     )
 }
 
-export default PostPage;
+export default EditPostPage;

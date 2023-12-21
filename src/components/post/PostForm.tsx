@@ -1,14 +1,17 @@
 'use client';
-import { IUser } from "@/types";
+import { IPost, IUser } from "@/types";
 import { useFormik } from "formik";
 
-const AddPostForm = () => {
+const PostForm = ({edit}:{edit?:boolean}) => {
 
+    // TODO: load post data if edit is true
+    let initialData: IPost | undefined;
+    
     const formik = useFormik({
         initialValues: {
-            title: '',
-            content: '',
-            userId: '',
+            title: initialData?.title || '',
+            content: initialData?.body || '',
+            userId: initialData?.userId || '',
         },
         onSubmit: values => {
             console.log(JSON.stringify(values, null, 2));
@@ -33,7 +36,10 @@ const AddPostForm = () => {
 
     return (
         <>
-            <h2>Add a New Post</h2>
+            <h2>
+                { edit ? "Edit Post":
+                "Add a New Post"}
+            </h2>
 
             <form onSubmit={formik.handleSubmit}>
                 <label htmlFor="postTitle">Post Title:</label>
@@ -74,4 +80,4 @@ const AddPostForm = () => {
 }
 
 
-export default AddPostForm;
+export default PostForm;
