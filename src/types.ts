@@ -8,14 +8,21 @@ export type IPost = {
     title:string,
     body: string,
     id:string,
-    date: string | Date,
+    date: string,
+    userId: string,
     reaction: {
         thumbsUp: number,
         wow: number,
         heart: number,
         rocket: number,
-        coffee: number
+        coffee: number,
+        [k:string]: number // to dynamically index keys
     }
+}
+
+export type IUser = {
+    id:string,
+    name: string,
 }
 export interface IPostContext {
     loading: boolean,
