@@ -1,10 +1,13 @@
-
+import AddPostForm from "@/components/post/AddPost";
 
 const PostPage = () => {
+
+
     return (
-        <h1>Post Page</h1>
+        <section>
+            <AddPostForm />
+        </section>
     )
 }
-
 
 export default PostPage;
