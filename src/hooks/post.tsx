@@ -7,6 +7,7 @@ export const usePosts = (): IPostContext =>{
     return {loading, posts, error}
 }
 
-export const usePost = ()=>{
-    return {}
+export const usePost = (postId:string): IPost | null=>{
+    // return {} as IPost
+    return null
 }
