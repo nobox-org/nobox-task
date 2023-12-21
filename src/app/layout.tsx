@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-
+import './styles.css';
 
 export const metadata: Metadata = {
   title: 'Nobox Blog',
@@ -11,7 +11,7 @@ export default function RootLayout({children}: {
 }) {
     return (
         <html lang="en">
-        <body>{children}</body>
+            <body>{children}</body>
         </html>
     )
 }
