@@ -12,7 +12,7 @@ html {
 
 body {
     min-height: 100vh;
-    font-size: 1.5rem;
+    font-size: 18px;
 }
 
 input,
@@ -25,18 +25,32 @@ select {
 
 header {
     padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: purple;
+    background-color: rgb(0, 64, 128);
     color: whitesmoke;
     position: sticky;
     top: 0;
+
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.4rem;
 }
 
 nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+}
+
+@media screen and (min-width: 900px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav {
+        justify-content: flex-end;
+    }
 }
 
 nav ul {
@@ -52,6 +66,7 @@ nav a,
 nav a:visited {
     color: #fff;
     text-decoration: none;
+    font-size: 1.2rem;
 }
 
 nav a:hover,
@@ -76,7 +91,7 @@ article {
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 }
 
 h2 {
