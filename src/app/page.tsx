@@ -1,10 +1,11 @@
+import PostList from "@/components/post/PostList";
 
 
 export default function Home() {
     return (
-      <main>
-      
-        <h1>Nobox blog</h1>
-      </main>
+
+      <>
+        <PostList/>
+      </>
     )
 }
