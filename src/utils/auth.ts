@@ -1,12 +1,17 @@
 import { UserModel } from "@/lib/nobox/record-structures/user";
 import { IUser } from "@/types";
 
+
+let localStorage:Storage;
+
+if (typeof window !== 'undefined' && window.localStorage) {
+    localStorage = window.localStorage
+}
+
 export async function createUser(document: any){
     // Define the parameters for the findOne operation
     
     const insertedDocument = await UserModel.insertOne(document);
-
-    console.log(insertedDocument)
 
     return insertedDocument;
 }
@@ -18,7 +23,7 @@ export async function login(userdata: any){
 
     if (!userData) throw new Error("Account does not exist");
 
-    localStorage.setItem('NOBOX:BLOG::USER', JSON.stringify(userData, null, 2))
+    if (localStorage) localStorage.setItem('NOBOX:BLOG::USER', JSON.stringify(userData, null, 2))
 
     return userData;
 }
@@ -26,6 +31,8 @@ export async function login(userdata: any){
 
 export function getUser(): IUser | null{
     // Define the parameters for the findOne operation
+
+    if (!localStorage) return null
 
     const _stored_data = localStorage.getItem('NOBOX:BLOG::USER');
 
@@ -36,6 +43,6 @@ export function getUser(): IUser | null{
 
 export function logout(){
     // Define the parameters for the findOne operation
-
+    if (!localStorage) return
     return localStorage.removeItem('NOBOX:BLOG::USER');
 }
