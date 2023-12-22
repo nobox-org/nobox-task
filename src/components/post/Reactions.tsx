@@ -21,7 +21,7 @@ const Reactions = ({post}:{post:IPost}) => {
                     console.log(`Reacted ${name}: ${emoji}`);
                 }}
             >
-                {emoji} {post.reaction[name]}
+                {emoji} {post.reaction![name]}
             </button>
         )
     })
