@@ -9,8 +9,8 @@ import { useState } from "react";
 const RegisterForm = ({edit}:{edit?:boolean}) => {
 
     // TODO: Implement User edit information still using this same template
-    // ? Load current user data, store it in initialData variable
-    // ?    and tweak the onSubmit function to edit instead of create
+    // * Load current user data, store it in initialData variable
+    // *    and tweak the onSubmit function to edit instead of create
     let initialData: IUser | undefined;
 
     const router = useRouter();
