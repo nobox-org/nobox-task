@@ -1,6 +1,6 @@
 'use client';
 import { IPost, IPostContext, IPostReducerAction, PostActions, ReactProps } from '@/types';
-import { fetchPosts } from '@/utils/requests';
+import { fetchPosts } from '@/utils/posts';
 import {createContext, useContext, useEffect, useReducer} from 'react';
 
 
