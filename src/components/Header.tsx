@@ -6,11 +6,12 @@ import Link from "next/link"
 const Header = () => {
     const {user, logout} = useAuthContext();
 
-    console.log(user)
-
     return (
         <header>
-            <h1>Nobox Blog</h1>
+            <h1 className="logo">
+                <span data-img="/logo.svg" className="img-logo"></span>
+                Nobox Blog
+            </h1>
 
             <nav>
                 <ul>
