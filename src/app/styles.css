@@ -159,3 +159,19 @@ textarea {
     background-color: palevioletred;
     color: white;
 }
+
+.logo {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.img-logo {
+    display: inline-block;
+    width: 1.6rem;
+    aspect-ratio: 1;
+    /* border: 1px solid;
+    border-radius: 50%; */
+    background-image: url('/logo.svg');
+}

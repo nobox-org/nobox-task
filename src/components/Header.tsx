@@ -8,7 +8,10 @@ const Header = () => {
 
     return (
         <header>
-            <h1>Nobox Blog</h1>
+            <h1 className="logo">
+                <span data-img="/logo.svg" className="img-logo"></span>
+                Nobox Blog
+            </h1>
 
             <nav>
                 <ul>
