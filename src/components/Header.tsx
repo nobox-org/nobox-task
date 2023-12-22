@@ -6,8 +6,6 @@ import Link from "next/link"
 const Header = () => {
     const {user, logout} = useAuthContext();
 
-    console.log(user)
-
     return (
         <header>
             <h1>Nobox Blog</h1>

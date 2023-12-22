@@ -6,8 +6,6 @@ export async function createUser(document: any){
     
     const insertedDocument = await UserModel.insertOne(document);
 
-    console.log(insertedDocument)
-
     return insertedDocument;
 }
 
