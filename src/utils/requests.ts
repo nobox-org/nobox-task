@@ -13,21 +13,26 @@ function parsePostResults(results:any[], up=false) {
 
 
     const res = _results.map((item)=>{
+
+        // Parse it to nobox
         if (up) {
             
-            item.reaction = JSON.stringify(item.reaction)
+            if(item.reaction) item.reaction = JSON.stringify(item.reaction)
             return item
         }
 
-
-        return ({
+        // Parse it from nobox
+        const _dt:IPost = {
             title: item.title,
-            body: item.body,
+            content: item.content,
+            userId: item.userId,
+
             id: item.id,
             date: item.created_at,
-            userId: item.userId,
             reaction: JSON.parse(item.reaction)
-        })
+        }
+
+        return _dt
     })
 
     if (is_array) return res[0];
@@ -59,8 +64,9 @@ export async function fetchPost(id:string){
 export async function sendPost(documents:IPost | IPost[]){
     // Define the parameters for the findOne operation
 
-    const parsedDocuments = parsePostResults(documents as any);
-    const insertedDocuments = await PostModel.insert(parsedDocuments);
+    const parsedDocuments = parsePostResults(documents as any, true);
+    
+    const insertedDocuments = await PostModel.insertOne(parsedDocuments);
 
-    return parsePostResults(insertedDocuments)
+    return parsePostResults(insertedDocuments as any)
 }

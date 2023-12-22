@@ -6,11 +6,11 @@ export interface ReactProps {
 
 export type IPost = {
     title:string,
-    body: string,
-    id:string,
-    date: string,
-    userId: string,
-    reaction: {
+    content: string,
+    userId?: string,
+    id?:string,
+    date?: string,
+    reaction?: {
         thumbsUp: number,
         wow: number,
         heart: number,

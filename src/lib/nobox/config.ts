@@ -8,12 +8,10 @@ if (!process.env.NEXT_PUBLIC_NOBOX_TOKEN) {
 
 export const config: Config = {
     endpoint:  "https://api.nobox.cloud",
-    project:  "nobox_bLog",
+    project:  "noboxBlog",
     token: process.env.NEXT_PUBLIC_NOBOX_TOKEN,
 };
 
 export const createRowSchema = getSchemaCreator(config, { type: "rowed" });
-
-export const createKeyGroupSchema = getSchemaCreator(config, { type: "key-group" });
 
 export  const  Nobox  =  getFunctions(config);
