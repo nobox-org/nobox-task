@@ -1,5 +1,6 @@
 'use client';
-import { login } from "@/utils/auth";
+import { useAuthContext } from "@/context/AuthContext";
+// import { login } from "@/utils/auth";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -7,7 +8,7 @@ import { useState } from "react";
 
 const LoginForm = () => {
 
-
+    const {login} = useAuthContext();
     const router = useRouter();
 
     const [loading, setLoading] = useState(false);
@@ -35,8 +36,8 @@ const LoginForm = () => {
 
             login(data)
             .then((res)=>{
-                // console.log(res)
-                // setLoading(false)
+            //     // console.log(res)
+            //     // setLoading(false)
                 router.push('/');
             })
             .catch((err)=>{
