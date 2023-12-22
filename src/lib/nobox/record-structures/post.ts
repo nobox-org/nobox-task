@@ -3,7 +3,7 @@ import { createRowSchema } from "../config";
 
 interface Post {
     title:string,
-    body: string,
+    content: string,
     userId: string,
     reaction: string
 }
@@ -17,7 +17,7 @@ export const PostStructure: Space<Post> = {
             type: String,
             required: true
         },
-        body: {
+        content: {
             description: "Post content",
             required: true,
             type: String
@@ -29,7 +29,7 @@ export const PostStructure: Space<Post> = {
         },
         reaction: {
             description: "Post reaction",
-            required: false,
+            required: true,
             type: String,
             defaultValue: JSON.stringify({
                 thumbsUp: 0,
