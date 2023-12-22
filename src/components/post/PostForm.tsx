@@ -1,6 +1,6 @@
 'use client';
 import { IPost, IUser } from "@/types";
-import { sendPost } from "@/utils/requests";
+import { sendPost } from "@/utils/posts";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -57,7 +57,7 @@ const PostForm = ({edit}:{edit?:boolean}) => {
 
     const usersOptions = users.map(user=>(
         <option key={user.id} value={user.id}>
-            {user.name}
+            {user.username}
         </option>
     ))
 

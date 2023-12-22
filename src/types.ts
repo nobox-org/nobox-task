@@ -21,9 +21,12 @@ export type IPost = {
 }
 
 export type IUser = {
-    id:string,
-    name: string,
+    id?:string,
+    username: string,
+    email:string,
+    password: string,
 }
+
 export interface IPostContext {
     loading: boolean,
     posts: IPost[],

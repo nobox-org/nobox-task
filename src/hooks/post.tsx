@@ -1,6 +1,6 @@
 import { usePostContext } from "@/context/PostContext"
 import { IPost, IPostContext } from "@/types"
-import { fetchPost } from "@/utils/requests";
+import { fetchPost } from "@/utils/posts";
 import { useEffect, useState } from "react";
 
 
