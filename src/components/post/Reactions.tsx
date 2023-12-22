@@ -18,6 +18,8 @@ const Reactions = ({post}:{post:IPost}) => {
                 type="button"
                 className="reactionButton"
                 onClick={()=>{
+                    // TODO: Implement update on post using nobox updateOne
+                    // ? https://www.docs.nobox.cloud/methods/update-one
                     console.log(`Reacted ${name}: ${emoji}`);
                 }}
             >

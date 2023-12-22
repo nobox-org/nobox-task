@@ -7,7 +7,9 @@ import { useState } from "react";
 
 const PostForm = ({edit}:{edit?:boolean}) => {
 
-    // TODO: load post data if edit is true
+    // TODO: Implement Post edit information still using this same template
+    // * Load current post data, store it in initialData variable
+    // *    and tweak the onSubmit function to edit instead of send post
     let initialData: IPost | undefined;
 
     const router = useRouter();
@@ -24,8 +26,7 @@ const PostForm = ({edit}:{edit?:boolean}) => {
             content: initialData?.content || '',
             userId: initialData?.userId || '',
         },
-        onSubmit: values => {
-            console.log(JSON.stringify(values, null, 2));
+        onSubmit: values => {            
 
             const data:IPost = {
                 title: values.title,
@@ -52,7 +53,14 @@ const PostForm = ({edit}:{edit?:boolean}) => {
     });
 
 
-    // TODO: Implement users query when user is implemented
+
+    /* 
+        TODO: Implement users query when user is implemented
+        * After implementing User and User authentication
+        * Create custom hook to load user details by id
+        * use the hook to load author's information here
+        * display users username in this option template
+    */
     const users:IUser[] = [];
 
     const usersOptions = users.map(user=>(

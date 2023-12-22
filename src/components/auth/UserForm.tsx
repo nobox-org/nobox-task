@@ -8,7 +8,9 @@ import { useState } from "react";
 
 const RegisterForm = ({edit}:{edit?:boolean}) => {
 
-    // TODO: load post data if edit is true
+    // TODO: Implement User edit information still using this same template
+    // * Load current user data, store it in initialData variable
+    // *    and tweak the onSubmit function to edit instead of create
     let initialData: IUser | undefined;
 
     const router = useRouter();
@@ -25,7 +27,6 @@ const RegisterForm = ({edit}:{edit?:boolean}) => {
             confirmPassword: '',
         },
         onSubmit: values => {
-            // console.log(JSON.stringify(values, null, 2));
 
             if (values.password !== values.confirmPassword){
                 setError("Password and confirm password does not match");

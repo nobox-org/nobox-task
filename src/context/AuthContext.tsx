@@ -20,7 +20,6 @@ export const AuthContextProvider = ({children}:ReactProps) => {
    
    
     const user = useMemo(()=>{
-        console.log("Got here")
         const dt = getUser();
 
         if (!dt) return null;

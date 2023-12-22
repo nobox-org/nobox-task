@@ -35,9 +35,7 @@ const LoginForm = () => {
             setLoading(true);
 
             login(data)
-            .then((res)=>{
-            //     // console.log(res)
-            //     // setLoading(false)
+            .then((res)=>{            
                 router.push('/');
             })
             .catch((err)=>{
