@@ -12,6 +12,7 @@
     "date-fns": "^3.0.5",
     "formik": "^2.4.5",
     "next": "14.0.4",
+    "nobox-client": "^1.11.13",
     "react": "^18",
     "react-dom": "^18"
   },

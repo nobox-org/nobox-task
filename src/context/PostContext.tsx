@@ -1,6 +1,7 @@
 'use client';
-import { IPostContext, IPostReducerAction, PostActions, ReactProps } from '@/types';
-import {createContext, useContext, useReducer} from 'react';
+import { IPost, IPostContext, IPostReducerAction, PostActions, ReactProps } from '@/types';
+import { fetchPosts } from '@/utils/requests';
+import {createContext, useContext, useEffect, useReducer} from 'react';
 
 
 const initialState:IPostContext = {
@@ -40,6 +41,31 @@ export const usePostContext = ()=>useContext(PostContext);
 export const PostContextProvider = ({children}:ReactProps) => {
 
     const [postState, dispatch] = useReducer(postReducer, initialState);
+
+
+    useEffect(()=>{
+        (()=>{
+            dispatch({
+                type: PostActions.LOADING,
+            })
+
+
+            fetchPosts()
+            .then((posts: IPost[])=>{
+                dispatch({
+                    type: PostActions.LOADED,
+                    payload: posts
+                })
+            })
+            .catch((error)=>{
+                console.error(error);
+                dispatch({
+                    type: PostActions.ERROR,
+                    payload: "Could not load posts"
+                })
+            })
+        })()
+    }, [])
 
 
     const context = {
