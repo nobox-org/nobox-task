@@ -33,6 +33,12 @@ export interface IPostContext {
     error?: string | null
 }
 
+export interface IAuthContext {
+    user: IUser | null,
+    logout: ()=>void
+    login: (data:any)=>Promise<void>
+}
+
 
 export type IPostReducerAction = {
     type: string,

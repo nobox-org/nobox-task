@@ -1,7 +1,13 @@
+'use client'
+import { useAuthContext } from "@/context/AuthContext";
 import Link from "next/link"
 
 
 const Header = () => {
+    const {user, logout} = useAuthContext();
+
+    console.log(user)
+
     return (
         <header>
             <h1>Nobox Blog</h1>
@@ -19,9 +25,20 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href={"/auth/login"}>
-                            Login
-                        </Link>
+                        {
+                            !user ? (
+                                <Link href={"/auth/login"}>
+                                    Login
+                                </Link>) :
+                                (
+                                    <Link href={"/auth/logout"} onClick={(e)=>{
+                                        e.preventDefault()
+                                        logout();
+                                    }}>
+                                        {user.username}
+                                    </Link>
+                                )
+                        }
                     </li>
                 </ul>
             </nav>

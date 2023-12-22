@@ -3,6 +3,7 @@ import './styles.css';
 import Header from '@/components/Header';
 import { ReactProps } from '@/types';
 import { PostContextProvider } from '@/context/PostContext';
+import { AuthContextProvider } from '@/context/AuthContext';
 
 export const metadata: Metadata = {
   title: 'Nobox Blog',
@@ -14,13 +15,17 @@ export default function RootLayout({children}: ReactProps) {
         <html lang="en">
             <body>
 
-                <Header/>
+                <AuthContextProvider>
 
-                <PostContextProvider>
-                    <main>
-                        {children}
-                    </main>
-                </PostContextProvider>
+                    <Header/>
+                    
+                    <PostContextProvider>
+                        <main>
+                            {children}
+                        </main>
+                    </PostContextProvider>
+                </AuthContextProvider>
+
             </body>
         </html>
     )
