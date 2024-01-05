@@ -10,7 +10,7 @@ const Header = () => {
         <header>
             <h1 className="logo">
                 <span data-img="/logo.svg" className="img-logo"></span>
-                Nobox Blog
+                Nobox Task Manager
             </h1>
 
             <nav>
@@ -21,8 +21,8 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href={"/post"}>
-                            Post
+                        <Link href={"/tasks"}>
+                            Task
                         </Link>
                     </li>
                     <li>

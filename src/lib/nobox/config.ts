@@ -8,7 +8,7 @@ if (!process.env.NEXT_PUBLIC_NOBOX_TOKEN) {
 
 export const config: Config = {
     endpoint:  "https://api.nobox.cloud",
-    project:  "noboxBlog",
+    project:  "taskManager",
     token: process.env.NEXT_PUBLIC_NOBOX_TOKEN,
 };
 
