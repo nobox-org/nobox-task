@@ -25,7 +25,7 @@ const TaskItem = ({task, onUpdate}: {task: ITask, onUpdate:(doc:ITask)=>void}) =
                     <span>Completed</span>
                 </label>
                 {/* <PostAuthor userId={task.userId as string} /> */}
-                <TimeAgo timestamp={task.created_at as string} />
+                <TimeAgo timestamp={task.createAt as string} />
             </p>
 
       </article>
