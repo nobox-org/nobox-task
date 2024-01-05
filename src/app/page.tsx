@@ -1,11 +1,11 @@
-import PostList from "@/components/post/PostList";
+import TaskList from "@/components/tasks/TaskList";
 
 
 export default function Home() {
     return (
 
       <>
-        <PostList/>
+        <TaskList/>
       </>
     )
 }

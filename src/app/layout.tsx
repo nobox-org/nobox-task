@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './styles.css';
 import Header from '@/components/Header';
 import { ReactProps } from '@/types';
-import { PostContextProvider } from '@/context/PostContext';
 import { AuthContextProvider } from '@/context/AuthContext';
+import { TaskContextProvider } from '@/context/TaskContext';
 
 export const metadata: Metadata = {
   title: 'Nobox Blog',
@@ -19,11 +19,11 @@ export default function RootLayout({children}: ReactProps) {
 
                     <Header/>
                     
-                    <PostContextProvider>
+                    <TaskContextProvider>
                         <main>
                             {children}
                         </main>
-                    </PostContextProvider>
+                    </TaskContextProvider>
                 </AuthContextProvider>
 
             </body>

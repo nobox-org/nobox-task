@@ -1,26 +1,26 @@
-import { usePostContext } from "@/context/PostContext"
-import { IPost, IPostContext } from "@/types"
-import { fetchPost } from "@/utils/posts";
+import { useTaskContext } from "@/context/TaskContext";
+import { ITask, ITaskContext } from "@/types";
+import { fetchTask } from "@/utils/task.utils";
 import { useEffect, useState } from "react";
 
 
-export const usePosts = (): IPostContext =>{
-    const {loading, posts, error} = usePostContext();
+export const useTasks = (): ITaskContext =>{
+    const {loading, tasks, error} = useTaskContext();
     
-    return {loading, posts, error}
+    return {loading, tasks, error}
 }
 
-export const usePost = (postId:string) =>{
-    const [post, setPost] = useState<IPost | null>(null);
+export const useTask = (taskId:string) =>{
+    const [task, setTask] = useState<ITask | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
 
     useEffect(()=>{
         (()=>{
-            fetchPost(postId)
+            fetchTask(taskId)
             .then((res)=>{
-                setPost(()=>res);
+                setTask(()=>res);
             })
             .catch((err)=>{
                 setError(()=>err);
@@ -32,5 +32,5 @@ export const usePost = (postId:string) =>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    return {loading, post, error};
+    return {loading, task, error};
 }

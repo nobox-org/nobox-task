@@ -4,20 +4,13 @@ export interface ReactProps {
     children: ReactNode
 }
 
-export type IPost = {
-    title:string,
-    content: string,
-    userId?: string,
+export type ITask = {
+    task:string,
+    completed: boolean,
+    userId: string,
     id?:string,
-    date?: string,
-    reaction?: {
-        thumbsUp: number,
-        wow: number,
-        heart: number,
-        rocket: number,
-        coffee: number,
-        [k:string]: number // to dynamically index keys
-    }
+    createAt?: string,
+    updateAt?: string,
 }
 
 export type IUser = {
@@ -27,9 +20,9 @@ export type IUser = {
     password: string,
 }
 
-export interface IPostContext {
+export interface ITaskContext {
     loading: boolean,
-    posts: IPost[],
+    tasks: ITask[],
     error?: string | null
 }
 
@@ -40,13 +33,14 @@ export interface IAuthContext {
 }
 
 
-export type IPostReducerAction = {
+export type ITaskReducerAction = {
     type: string,
     payload: Record<string, any>
 }
 
-export enum PostActions {
+export enum TaskActions {
     LOADING='loading',
     LOADED='loaded',
     ERROR='error',
+    UPDATE='update',
 }

@@ -1,52 +1,51 @@
 'use client';
-import { IPost, IUser } from "@/types";
-import { sendPost } from "@/utils/posts";
+import { ITask, IUser } from "@/types";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import TaskDisplay from "./TaskDisplay";
+import { sendTask } from "@/utils/task.utils";
 
-const PostForm = ({edit}:{edit?:boolean}) => {
+const TaskForm = ({edit}:{edit?:boolean}) => {
 
     // TODO: Implement Post edit information still using this same template
     // * Load current post data, store it in initialData variable
     // *    and tweak the onSubmit function to edit instead of send post
-    let initialData: IPost | undefined;
+    let initialData: ITask | undefined;
 
     const router = useRouter();
 
     const [saving, setSaving] = useState(false);
 
 
-    const [postError, setPostError] = useState<string | null>(null);
+    const [taskError, setTaskError] = useState<string | null>(null);
 
 
     const formik = useFormik({
         initialValues: {
-            title: initialData?.title || '',
-            content: initialData?.content || '',
-            userId: initialData?.userId || '',
+            task: initialData?.task || '',
         },
         onSubmit: values => {            
 
-            const data:IPost = {
-                title: values.title,
-                content: values.content,
-                userId: values.userId
+            const data:ITask = {
+                task: values.task,
+                completed: false,
+                userId: ''
             }
 
 
-            if (postError) setPostError(null);
+            if (taskError) setTaskError(null);
 
             setSaving(true);
 
-            sendPost(data)
+            sendTask(data)
             .then((res)=>{
-                router.push(`/post/${res.id}`);
+                router.push(`/tasks/${res.id}`);
                 // formik.resetForm()
             })
             .catch((err)=>{
                 console.error(err);
-                setPostError(()=>"Could not save post")
+                setTaskError(()=>"Could not save post")
                 setSaving(false)
             })
         },
@@ -78,21 +77,21 @@ const PostForm = ({edit}:{edit?:boolean}) => {
             </h2>
 
 
-            <span>{postError}</span>
+            <span>{taskError}</span>
             <span>{saving && "Saving..."}</span>
 
             <br/>
             <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="postTitle">Post Title:</label>
+                <label htmlFor="postTitle">Task:</label>
                 <input
                     type="text"
-                    id="title"
-                    name="title"
+                    id="task"
+                    name="task"
                     onChange={formik.handleChange}
-                    value={formik.values.title}
+                    value={formik.values.task}
                 />
 
-                <label htmlFor="postAuthor">Author:</label>
+                {/* <label htmlFor="postAuthor">Author:</label>
                 <select
                     id="author"
                     onChange={formik.handleChange}
@@ -100,20 +99,13 @@ const PostForm = ({edit}:{edit?:boolean}) => {
                 >
                     <option value=""></option>
                     {usersOptions}
-                </select>
+                </select> */}
 
-                <label htmlFor="postContent">Content:</label>
-                <textarea
-                    id="content"
-                    name="content"
-                    onChange={formik.handleChange}
-                    value={formik.values.content}
-                />
                 <button
                     type="submit"
                     // disabled={!canSave}
                 >
-                    Save Post
+                    Assign Task
                 </button>
             </form>
         </>
@@ -121,4 +113,4 @@ const PostForm = ({edit}:{edit?:boolean}) => {
 }
 
 
-export default PostForm;
+export default TaskForm;
